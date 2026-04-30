@@ -49,10 +49,13 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .burg span{display:block;width:20px;height:1.5px;background:var(--text)}
 
 /* HERO — split layout */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;padding:100px 0 60px}
-.hero-bg-cvs{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.h-left{padding:0 40px 0 clamp(28px,5.5vw,88px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
-.h-right{display:flex;align-items:center;justify-content:center;position:relative;z-index:2;padding-right:clamp(20px,4vw,64px)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr;align-items:center;position:relative;overflow:hidden;padding:80px 0 40px;max-width:100%;}
+@media(min-width:821px){
+  .hero{grid-template-columns:1fr 1fr;padding:100px 0 60px;}
+}
+.hero-bg-cvs{position:absolute;inset:0;width:100%;height:100%;z-index:0;max-width:100%;}
+.h-left{padding:0 clamp(20px,4vw,48px) 0 clamp(20px,4vw,48px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.h-right{display:flex;align-items:center;justify-content:center;position:relative;z-index:2;padding:0 clamp(20px,4vw,32px) 0 clamp(20px,4vw,32px);}
 
 /* name */
 .h-name{font-family:var(--fd);font-size:clamp(3.6rem,8.5vw,8rem);line-height:.87;letter-spacing:.03em;margin-bottom:20px;perspective:600px}
@@ -64,13 +67,13 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .tc{display:inline-block;width:2px;height:1em;background:var(--v);margin-left:2px;animation:bk .9s step-end infinite;vertical-align:middle}
 @keyframes bk{50%{opacity:0}}
 
-.h-tag{font-family:var(--fi);font-style:italic;font-size:clamp(.9rem,1.5vw,1.15rem);color:rgba(238,234,248,.45);max-width:400px;line-height:1.72;margin-bottom:38px}
+.h-tag{font-family:var(--fi);font-style:italic;font-size:clamp(.9rem,1.5vw,1.15rem);color:rgba(238,234,248,.45);max-width:min(400px,88vw);line-height:1.72;margin-bottom:38px}
 .h-ctas{display:flex;gap:11px;flex-wrap:wrap}
 
 /* girl wrapper */
-.girl-wrap{position:relative;width:100%;max-width:400px}
-.girl-cvs{width:100%;display:block;border-radius:24px}
-.girl-badge{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(5,5,15,.78);backdrop-filter:blur(12px);border:1px solid rgba(196,181,253,.22);border-radius:100px;padding:5px 18px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--v);white-space:nowrap}
+.girl-wrap{position:relative;width:100%;max-width:min(400px,94vw)}
+.girl-cvs{width:100%;display:block;border-radius:24px;max-width:100%;}
+.girl-badge{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(5,5,15,.78);backdrop-filter:blur(12px);border:1px solid rgba(196,181,253,.22);border-radius:100px;padding:5px 18px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--v);white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
 
 /* scroll hint */
 .sh{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;z-index:4}
@@ -84,7 +87,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .stag{display:inline-flex;align-items:center;gap:10px;font-size:.65rem;letter-spacing:.24em;text-transform:uppercase;color:var(--v);margin-bottom:14px;font-weight:700}
 .stag::before{content:'';display:block;width:24px;height:1px;background:var(--v)}
 .sh2{font-family:var(--fd);font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:.93;letter-spacing:.03em;margin-bottom:52px}
-.wrap{max-width:1120px;margin:0 auto}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(18px,4vw,60px)}
 
 /* ABOUT */
 .about{background:linear-gradient(180deg,var(--bg),var(--deep))}
@@ -113,8 +116,14 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .sk:hover .pill{color:var(--text);border-color:rgba(255,255,255,.13)}
 
 /* ANIM SHOWCASE */
-.anim-sc{grid-column:1/-1;background:rgba(255,255,255,.018);border:1px solid rgba(196,181,253,.16);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:340px 1fr;box-shadow:0 0 60px rgba(196,181,253,.05)}
-.anim-cvs-side{background:linear-gradient(135deg,rgba(20,10,40,.9),rgba(8,8,24,.95));display:flex;align-items:center;justify-content:center;padding:26px;border-right:1px solid rgba(196,181,253,.1);position:relative;min-height:340px}
+.anim-sc{grid-column:1/-1;background:rgba(255,255,255,.018);border:1px solid rgba(196,181,253,.16);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1fr;box-shadow:0 0 60px rgba(196,181,253,.05);}
+@media(min-width:821px){
+  .anim-sc{grid-template-columns:340px 1fr;}
+}
+.anim-cvs-side{background:linear-gradient(135deg,rgba(20,10,40,.9),rgba(8,8,24,.95));display:flex;align-items:center;justify-content:center;padding:26px;border-bottom:1px solid rgba(196,181,253,.1);position:relative;min-height:auto;}
+@media(min-width:821px){
+  .anim-cvs-side{border-right:1px solid rgba(196,181,253,.1);border-bottom:none;min-height:340px;}
+}
 .anim-live{position:absolute;top:13px;left:13px;background:rgba(196,181,253,.14);border:1px solid rgba(196,181,253,.3);border-radius:100px;padding:4px 11px;font-size:.58rem;font-weight:700;letter-spacing:.12em;color:var(--v);text-transform:uppercase}
 .anim-info{padding:34px 38px;display:flex;flex-direction:column;justify-content:center}
 .anim-sub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--b);font-weight:700;margin-bottom:11px}
@@ -127,7 +136,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* EXPERIENCE */
 .experience{background:var(--bg)}
-.exp-list{display:flex;flex-direction:column;gap:11px;max-width:840px}
+.exp-list{display:flex;flex-direction:column;gap:11px;max-width:min(840px,100%);}
 .ec{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:17px;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .25s;position:relative}
 .ec::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),var(--eg,rgba(196,181,253,.06)) 0%,transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .ec:hover::before{opacity:1}
@@ -136,6 +145,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .ec-hd{display:flex;align-items:center;justify-content:space-between;padding:19px 22px;gap:13px}
 .ec-l{display:flex;align-items:center;gap:13px;flex:1;min-width:0}
 .ec-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(255,255,255,.05);border:1px solid var(--border);flex-shrink:0;transition:.3s}
+@media(max-width:640px){.ec-ico{width:36px;height:36px;font-size:1rem;}}
 .ec:hover .ec-ico,.ec.open .ec-ico{border-color:var(--ea,var(--v));background:rgba(196,181,253,.07)}
 .ec-role{font-family:var(--fd);font-size:1.18rem;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ec-co{font-size:.69rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ea,var(--v));margin-top:2px}
@@ -154,10 +164,14 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* PROJECTS */
 .projects{background:var(--deep)}
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:17px}
+.pg{display:grid;grid-template-columns:1fr;gap:17px}
+@media(min-width:821px){
+  .pg{grid-template-columns:repeat(auto-fill,minmax(275px,1fr));}
+}
 .pc{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:19px;overflow:hidden;cursor:pointer;transition:border-color .3s,box-shadow .3s;transform-style:preserve-3d;perspective:700px}
 .pc:hover{border-color:rgba(255,255,255,.12);box-shadow:0 20px 70px rgba(0,0,0,.44)}
-.pc-hd{height:116px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pc-hd{min-height:116px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+@media(max-width:640px){.pc-hd{min-height:auto;padding:24px 0;}}
 .pc-em{font-size:2.7rem;position:relative;z-index:1;transition:transform .4s}
 .pc:hover .pc-em{transform:scale(1.14) translateY(-3px)}
 .pc-sh{position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.11) 0%,transparent 55%);opacity:0;transition:opacity .3s}
@@ -174,7 +188,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* MODAL */
 .mbg{position:fixed;inset:0;background:rgba(2,2,10,.88);backdrop-filter:blur(20px);z-index:800;display:flex;align-items:center;justify-content:center;padding:20px;animation:mf .2s ease}
 @keyframes mf{from{opacity:0}to{opacity:1}}
-.mo{background:rgba(9,9,20,.96);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:40px;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:mu .28s cubic-bezier(.22,1,.36,1)}
+.mo{background:rgba(9,9,20,.96);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:32px;max-width:min(540px,94vw);width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:mu .28s cubic-bezier(.22,1,.36,1)}
 @keyframes mu{from{transform:translateY(34px);opacity:0}to{transform:none;opacity:1}}
 .mcls{position:absolute;top:15px;right:15px;width:31px;height:31px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted);font-size:.74rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
 .mcls:hover{background:rgba(255,255,255,.11);color:var(--text)}
@@ -659,7 +673,7 @@ function GirlCanvas({ width=380, height=480 }) {
     render();
     return ()=>cancelAnimationFrame(raf.current);
   },[width,height]);
-  return <canvas ref={cvs} className="girl-cvs" style={{width:"100%",display:"block"}}/>;
+  return <canvas ref={cvs} className="girl-cvs" />;
 }
 
 
@@ -670,7 +684,7 @@ function Nav() {
   const go=id=>{ document.getElementById(id)?.scrollIntoView({behavior:"smooth"}); setMo(false); };
   const links=["about","skills","experience","projects","contact"];
   return (
-    <nav className={`nav${sc?" s":""}`}>
+    <nav className={`nav flex flex-col md:flex-row md:items-center md:justify-between${sc?" s":""}`}>
       <div className="logo" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}>VR.</div>
       <div className="nl-wrap">
         {links.map(l=><button key={l} className="nl" onClick={()=>go(l)}>{l}</button>)}
@@ -759,10 +773,10 @@ function About() {
               ))}
             </div>
           </div>
-          <div style={{position:"relative",minHeight:400,display:"flex",alignItems:"center",justifyContent:"center"}}>
-            <div style={{position:"absolute",width:320,height:320,borderRadius:"50%",background:"radial-gradient(circle at 40% 40%,var(--v) 0%,var(--p) 40%,var(--g) 80%,transparent 100%)",filter:"blur(2px)",opacity:.18,animation:"ob 6s ease-in-out infinite alternate",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}/>
+          <div className="relative flex items-center justify-center min-h-[360px]">
+            <div className="absolute top-1/2 left-1/2 w-[clamp(220px,34vw,320px)] h-[clamp(220px,34vw,320px)] rounded-full" style={{background:"radial-gradient(circle at 40% 40%,var(--v) 0%,var(--p) 40%,var(--g) 80%,transparent 100%)",filter:"blur(2px)",opacity:.18,animation:"ob 6s ease-in-out infinite alternate",transform:"translate(-50%,-50%)"}}/>
             <style>{`@keyframes ob{0%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-50%,-50%) scale(1.11)}}`}</style>
-            <div className="sc" style={{position:"relative",zIndex:1,width:"100%",maxWidth:360}}>
+            <div className="sc relative z-10 w-full max-w-[360px]">
               {[["4+","Projects Built"],["2+","Years Learning"],["MERN","Stack Dev"],["Blender","3D Modelling"],["2D","Animation"]].map(([v,l])=>(
                 <div key={l} className="sr"><span className="sv">{v}</span><span className="sl">{l}</span></div>
               ))}
@@ -790,7 +804,7 @@ function AnimShowcase({ vis }) {
     <div className="anim-sc" style={{opacity:vis?1:0,transform:vis?"none":"translateY(30px)",transition:"opacity .8s .5s,transform .8s .5s"}}>
       <div className="anim-cvs-side">
         <div className="anim-live">● Live Animation</div>
-        <div style={{width:"100%",maxWidth:280}}>
+        <div className="w-full max-w-[280px]">
           <GirlCanvas width={280} height={360}/>
         </div>
       </div>
